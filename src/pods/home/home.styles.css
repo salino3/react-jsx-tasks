@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: strech;
+  align-items: center;
   text-align: center;
   width: 100%;
   min-height: 100vh;
@@ -12,6 +12,7 @@
   background: lightblue;
   color: #264653;
   border-radius: 25px;
+  text-align: center;
 }
 
 .titleHome {
@@ -19,10 +20,27 @@
     font-family: cursive;
 }
 
-.contentForm {
-  display: flex;
+.firstdetails {
+  direction: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  text-align: center; 
+  max-width: 700px;
+  width: 400px;
+  position: relative;
+
 }
+
+.firstdetails summary {
+  width: min-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  self-align: center;
+  justify-self: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 
