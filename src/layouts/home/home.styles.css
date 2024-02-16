@@ -1,0 +1,13 @@
+
+.root {
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: strech;
+    min-height: 100vh;
+    height: 100%;
+    background: #FFC300;
+    padding: 20px 10px 100px;
+}
+
+

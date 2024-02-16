@@ -1,0 +1,37 @@
+.rootHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: strech;
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px;
+  background: lightblue;
+  color: #264653;
+  border-radius: 25px;
+}
+
+.titleHome {
+    font-size: 34px;
+    font-family: cursive;
+}
+
+.contentForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#newProductForm {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
