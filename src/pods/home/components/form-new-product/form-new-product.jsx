@@ -1,54 +1,116 @@
+import React from "react";
 import { FormField } from "@/common-app";
 import './form-new-product.styles.css';
 
 export const FormNewProduct = () => {
+
+
+    const [companyArray, setCompanyArray] = React.useState({
+        companyName: "",
+        city: "",
+        country: ""
+    });
+    const [productData, setProductData] = React.useState({
+        name: "",
+        code: "",
+        quantity: "",
+        price: "",
+        company: ""
+        });
+
+    const handleChange = (event) => {
+  
+       let { name, value } = event.target;
+
+       if (
+         (name === "quantity" && parseInt(value) < 0) ||
+         (name === "price" && parseInt(value) < 0)
+       ) {
+         value = 0;
+       };
+         setProductData({ ...productData, [name]: value });
+    
+    };
+
+    const handleChangeCompany = (event) => {
+            const { name, value } = event.target;
+       setCompanyArray({ ...companyArray, [name]: value });
+    }
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    let stringCompany = Object.values(companyArray).join(", ");
+    console.log({...productData, company: stringCompany});
+};
+
+React.useEffect(() => {
+
+}, [productData?.company])
+
+
   return (
     <div className="containerForm">
       <div className="contentForm">
-        <form id="newProductForm">
+        <form onSubmit={handleSubmit} id="newProductForm">
           <FormField
             type="text"
             txtLabel="Name"
             idName="name"
-            handleChange={() => {}}
-            value={""}
+            handleChange={handleChange}
+            value={productData?.name}
             pl="Name Product.."
           />
           <FormField
             type="number"
             txtLabel="Quantity"
             idName="quantity"
-            handleChange={() => {}}
-            value={""}
+            handleChange={handleChange}
+            value={productData?.quantity || ""}
             pl="Quantity.."
           />
           <FormField
             type="text"
             txtLabel="Code"
             idName="code"
-            handleChange={() => {}}
-            value={""}
+            handleChange={handleChange}
+            value={productData?.code}
             pl="Code Product.."
           />
           <FormField
             type="number"
             txtLabel="Price"
             idName="price"
-            handleChange={() => {}}
-            value={""}
-            pl="Pice.."
+            handleChange={handleChange}
+            value={productData?.price}
+            pl="Price.."
           />
           <FormField
             type="text"
-            txtLabel="Company"
-            idName="company"
-            handleChange={() => {}}
-            value={""}
+            txtLabel="Company (Name)"
+            idName="companyName"
+            handleChange={handleChangeCompany}
+            value={companyArray.companyName.trim()}
             pl="Company.."
+          />
+          <FormField
+            type="text"
+            txtLabel="Company (City)"
+            idName="city"
+            handleChange={handleChangeCompany}
+            value={companyArray.city.trim()}
+            pl="City.."
+          />
+          <FormField
+            type="text"
+            txtLabel="Company (Country)"
+            idName="country"
+            handleChange={handleChangeCompany}
+            value={companyArray.country.trim()}
+            pl="Country.."
           />
           <div>
             <button className="btnForm" type="submit">
-                Send
+              Send
             </button>
           </div>
         </form>
