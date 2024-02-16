@@ -1,4 +1,4 @@
-import { FormNewProduct } from './components';
+import { FormNewProduct, ListProducts } from './components';
 import './home.styles.css';
 
 export const Home = () => {
@@ -12,6 +12,7 @@ export const Home = () => {
           </summary>
           <FormNewProduct />
         </details>
+        <ListProducts />
       </div>
     );
 }
