@@ -33,11 +33,77 @@
 
 .spanValue {
     width: 100%;
-   /* word-break: break-all; */
     text-align: left;
+    /* word-break: break-all; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+}
+
+
+.containerBtns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 3px 0px;
+}
+
+.boxBtnUpdate {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.boxBtnUpdate button {
+    padding: 2px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: 550;
+    color: blue;
+    background: transparent;
+    
+}
+
+.boxBtnUpdate button:active {
+    margin: 4px;
+    border: solid yellow;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/*  */
+
+.boxBtnDelete {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.boxBtnDelete button {
+    padding: 2px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: 550;
+    color: red;
+    background: transparent;
+}
+
+.boxBtnDelete button:active {
+    margin: 4px;
+    border: solid yellow;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.5);
+
 
 }
+
+

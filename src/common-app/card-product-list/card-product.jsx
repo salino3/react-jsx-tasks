@@ -25,6 +25,14 @@ export const CardProduct = ({item}) => {
             <span className="spanKey">Company:</span>
             <span className="spanValue">{item.company}</span>
           </h3>
+          <div className="containerBtns">
+            <div className="boxBtnUpdate">
+              <button>Update</button>
+            </div>
+            <div className="boxBtnDelete">
+              <button>Delete</button>
+            </div>
+          </div>
         </div>
       </div>
     );
