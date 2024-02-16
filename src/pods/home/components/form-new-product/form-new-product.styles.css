@@ -14,5 +14,8 @@
     font-weight: 600;
     padding: 5px;
     border-radius: 6px;
-    cursor: pointer;
+  }
+  
+  .btnFormActive {
+  cursor: pointer;
 }

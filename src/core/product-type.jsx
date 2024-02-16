@@ -10,3 +10,7 @@ const typesProducts = {
 };
 
 export const { GET_PRODUCTS, GET_PRODUCT } = typesProducts;
+
+export const routesApp = {
+  products: "http://localhost:5000/api/products",
+};

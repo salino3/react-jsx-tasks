@@ -1,24 +1,28 @@
 import React from "react";
+import { ContextProduct } from "@/core";
 import { FormField } from "@/common-app";
 import './form-new-product.styles.css';
 
 export const FormNewProduct = () => {
 
+  const {areAllParamsFilled} = React.useContext(ContextProduct);
 
-    const [companyArray, setCompanyArray] = React.useState({
-        companyName: "",
-        city: "",
-        country: ""
-    });
-    const [productData, setProductData] = React.useState({
-        name: "",
-        code: "",
-        quantity: "",
-        price: "",
-        company: ""
-        });
-
-    const handleChange = (event) => {
+  
+  const [companyArray, setCompanyArray] = React.useState({
+    companyName: "",
+    city: "",
+    country: ""
+  });
+  const [productData, setProductData] = React.useState({
+    name: "",
+    code: "",
+    quantity: "",
+    price: ""
+  });
+  
+  let isDisabled = !areAllParamsFilled(companyArray) || !areAllParamsFilled(productData);
+    
+  const handleChange = (event) => {
   
        let { name, value } = event.target;
 
@@ -109,7 +113,11 @@ React.useEffect(() => {
             pl="Country.."
           />
           <div>
-            <button className="btnForm" type="submit">
+            <button
+              disabled={isDisabled}
+              className={`btnForm ${!isDisabled && "btnFormActive"}`}
+              type="submit"
+            >
               Send
             </button>
           </div>
