@@ -1,11 +1,11 @@
 import React from "react";
-import { ContextProduct } from "@/core";
+import { useProducts } from "@/hooks";
 import { FormField } from "@/common-app";
 import './form-new-product.styles.css';
 
 export const FormNewProduct = () => {
 
-  const {areAllParamsFilled} = React.useContext(ContextProduct);
+  const { createProduct, areAllParamsFilled } = useProducts();
 
   
   const [companyArray, setCompanyArray] = React.useState({
@@ -44,7 +44,8 @@ export const FormNewProduct = () => {
 const handleSubmit = (event) => {
     event.preventDefault();
     let stringCompany = Object.values(companyArray).join(", ");
-    console.log({...productData, company: stringCompany});
+   
+    createProduct({ ...productData, company: stringCompany });
 };
 
 React.useEffect(() => {

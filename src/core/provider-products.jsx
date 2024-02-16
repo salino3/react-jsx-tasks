@@ -26,12 +26,8 @@ export const ProductProvider = ({children}) => {
       }, [state.products]);
     
 
-    const areAllParamsFilled = (obj) => {
-        return Object.values(obj).every((value) => value !== null && value !== undefined && value !== '');
-};
-
     return (
-        <ContextProduct.Provider value={{state, dispatch, areAllParamsFilled}}>
+        <ContextProduct.Provider value={{state, dispatch}}>
             {children}
         </ContextProduct.Provider>
     )
