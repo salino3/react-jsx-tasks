@@ -6,7 +6,7 @@ export const ProductProvider = ({children}) => {
 
     const [state, dispatch] = React.useReducer(ProductReducer, initialState);
 
-    const fetchData = async () => {
+    const fetchData = React.useCallback(async () => {
       const response = await fetch(
         `${routesApp.products}`
       );
@@ -15,11 +15,12 @@ export const ProductProvider = ({children}) => {
         type: GET_PRODUCTS,
         payload: res,
       });
-    };
+    }, [dispatch]);
 
+    
       React.useEffect(() => {
         fetchData();
-    }, [dispatch]);
+      }, [dispatch]);
     
       React.useEffect(() => {
         console.log(state.products);
@@ -27,7 +28,7 @@ export const ProductProvider = ({children}) => {
     
 
     return (
-        <ContextProduct.Provider value={{state, dispatch}}>
+        <ContextProduct.Provider value={{state, dispatch, fetchData}}>
             {children}
         </ContextProduct.Provider>
     )
