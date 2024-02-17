@@ -1,7 +1,7 @@
 import React from "react";
 import { ContextProduct } from "@/core";
 import { CardProduct } from "@/common-app";
-import './list.products.styles.css';
+import './list-products.styles.css';
 
 
 export const ListProducts = () => {

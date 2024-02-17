@@ -7,6 +7,7 @@ export const useProducts = () => {
 
  const {fetchData} = React.useContext(ContextProduct);
 
+ //
  const createProduct = async (item) => {
   await Axios.post(routesApp.products, item)
   .then(async (res) => {
@@ -19,13 +20,30 @@ export const useProducts = () => {
   });
  };
 
+ //
+ const deleteProduct = async (id) => {
+
+  await Axios.delete(`${routesApp.products}/${id}`)
+  .then(async (res) => {
+    
+    if(res.status === 200) {
+      console.log(res.data.message);
+      await fetchData();
+    };
+    
+  })
+  .catch((error) => {
+       console.error("Error deleting product:", error.message);
+  });
+ };
 
  const areAllParamsFilled = (obj) => {
     return Object.values(obj).every((value) => value !== null && value !== undefined && value !== '');
 };
 
     return {
-        createProduct,
-        areAllParamsFilled
-    }
+      createProduct,
+      areAllParamsFilled,
+      deleteProduct,
+    };
 };

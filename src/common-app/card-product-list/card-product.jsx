@@ -1,6 +1,9 @@
+import { useProducts } from '@/hooks/useProducts';
 import './card-product.styles.css';
 
 export const CardProduct = ({item}) => {
+
+  const { deleteProduct } = useProducts();
 
     return (
       <div className="containerCard">
@@ -11,26 +14,26 @@ export const CardProduct = ({item}) => {
           </h3>
           <h3 className="boxTxt">
             <span className="spanKey">Code:</span>
-            <span className="spanValue">{item.name}</span>
+            <span className="spanValue">{item.code}</span>
           </h3>
           <h3 className="boxTxt">
             <span className="spanKey">Quantity:</span>
-            <span className="spanValue">{item.name}</span>
+            <span className="spanValue">{item.quantity}</span>
           </h3>
           <h3 className="boxTxt">
             <span className="spanKey">Price:</span>
-            <span className="spanValue">{item.name}</span>
+            <span className="spanValue">{item.price}</span>
           </h3>
           <h3 className="boxTxt">
             <span className="spanKey">Company:</span>
-            <span className="spanValue">{item.company}</span>
+            <span className="spanValue spanValueComapny">{item.company}</span>
           </h3>
           <div className="containerBtns">
             <div className="boxBtnUpdate">
               <button>Update</button>
             </div>
             <div className="boxBtnDelete">
-              <button>Delete</button>
+              <button onClick={() => deleteProduct(item?.id)}>Delete</button>
             </div>
           </div>
         </div>
