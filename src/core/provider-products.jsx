@@ -7,14 +7,25 @@ export const ProductProvider = ({children}) => {
     const [state, dispatch] = React.useReducer(ProductReducer, initialState);
 
     const fetchData = React.useCallback(async () => {
-      const response = await fetch(
-        `${routesApp.products}`
-      );
-      const res = await response.json();
-      dispatch({
-        type: GET_PRODUCTS,
-        payload: res,
-      });
+      try {
+        
+        const response = await fetch(
+          `${routesApp.products}`
+          );
+          if (response.status === 404) {
+            console.log(response.statusText);
+            return;
+          };
+
+          const res = await response.json();
+          
+          dispatch({
+            type: GET_PRODUCTS,
+            payload: res,
+          });
+        } catch (error) {
+          console.log(error);
+        }
     }, [dispatch]);
 
     

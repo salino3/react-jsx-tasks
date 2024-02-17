@@ -12,13 +12,10 @@ export const ListProducts = () => {
 
     return (
       <div className="listProducts">
-        {!products || products?.lenght < 1 ? (
+        {!products || products?.length === 0  ? (
           <h3>Thera are not products..</h3>
         ) : (
-          products.map((item) => <CardProduct 
-          key={item?.id}
-           item={item}
-            />)
+          products.map((item) => <CardProduct key={item?.id} item={item} />)
         )}
       </div>
     );

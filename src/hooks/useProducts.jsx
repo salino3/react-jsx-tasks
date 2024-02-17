@@ -11,9 +11,16 @@ export const useProducts = () => {
  const createProduct = async (item) => {
   await Axios.post(routesApp.products, item)
   .then(async (res) => {
-    console.log(res.data);
-    await fetchData();
-    return res.data;
+    
+    if (res.status === 404) {
+      console.log(res.data.message);
+    };
+
+    if(res.status === 200) {
+      console.log(res.data.message);
+      console.log(res.data.newData);
+      await fetchData();
+    };
   })
   .catch((error) => {
     console.error(error);

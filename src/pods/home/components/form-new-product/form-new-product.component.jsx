@@ -7,18 +7,22 @@ export const FormNewProduct = () => {
 
   const { createProduct, areAllParamsFilled } = useProducts();
 
+  const initialData = {
+    mainData: {
+      name: "",
+      code: "",
+      quantity: "",
+      price: "",
+    },
+    companyData: {
+      companyName: "",
+      city: "",
+      country: "",
+    },
+  };
   
-  const [companyArray, setCompanyArray] = React.useState({
-    companyName: "",
-    city: "",
-    country: ""
-  });
-  const [productData, setProductData] = React.useState({
-    name: "",
-    code: "",
-    quantity: "",
-    price: ""
-  });
+  const [companyArray, setCompanyArray] = React.useState(initialData?.companyData);
+  const [productData, setProductData] = React.useState(initialData?.mainData);
   
   let isDisabled = !areAllParamsFilled(companyArray) || !areAllParamsFilled(productData);
     
@@ -41,11 +45,14 @@ export const FormNewProduct = () => {
        setCompanyArray({ ...companyArray, [name]: value });
     }
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
     event.preventDefault();
     let stringCompany = Object.values(companyArray).join(", ");
    
-    createProduct({ ...productData, company: stringCompany });
+    await createProduct({ ...productData, company: stringCompany });
+
+    setProductData(initialData?.mainData);
+    setCompanyArray(initialData?.companyData);
 };
 
 React.useEffect(() => {
